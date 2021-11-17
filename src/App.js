@@ -10,7 +10,8 @@ function App() {
     return (
         <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/weatherInfo" element={<WeatherInfo />} />
+
+            <Route exact path="/weather/:name" element={<WeatherInfo />} />
         </Routes>
     );
 }
