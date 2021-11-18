@@ -3,7 +3,7 @@ import React from "react";
 //ROUTER
 import { useNavigate } from "react-router-dom";
 
-function CityInfo({ name, temp }) {
+function CityInfo({ name, temp, lon, lat, icon }) {
     //HOOKS ROUTER
     const navigate = useNavigate();
 
@@ -11,7 +11,11 @@ function CityInfo({ name, temp }) {
         <div>
             <h3>{name}</h3>
             <p>{temp}</p>
-            <button onClick={() => navigate(`/weather/${name}`)}>
+            <img
+                src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+                alt="icon"
+            />
+            <button onClick={() => navigate(`/weather/${name}/${lon}/${lat}`)}>
                 More info...
             </button>
         </div>

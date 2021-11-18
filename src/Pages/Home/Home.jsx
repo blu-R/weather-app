@@ -48,7 +48,13 @@ function Home() {
             {isLoading ? (
                 <Loader />
             ) : cityData ? (
-                <CityInfo name={cityData.name} temp={cityData.main.temp} />
+                <CityInfo
+                    name={cityData.name}
+                    temp={cityData.main.temp}
+                    lon={cityData.coord.lon}
+                    lat={cityData.coord.lat}
+                    icon={cityData.weather[0].icon}
+                />
             ) : (
                 error && <p>{error}</p>
             )}

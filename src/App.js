@@ -11,7 +11,12 @@ function App() {
         <Routes>
             <Route exact path="/" element={<Home />} />
 
-            <Route exact path="/weather/:name" element={<WeatherInfo />} />
+            <Route
+                exact
+                path="/weather/:name/:lon/:lat"
+                element={<WeatherInfo />}
+            />
+            <Route exact path="*" element={<h2>Not Found</h2>} />
         </Routes>
     );
 }
