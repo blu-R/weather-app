@@ -1,0 +1,10 @@
+.backg {
+    background: rgb(191, 245, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(191, 245, 255, 1) 0%,
+        rgba(1, 119, 255, 1) 87%
+    );
+    /* background-size: cover; */
+    height: 100vh;
+}

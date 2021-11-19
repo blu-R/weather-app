@@ -1,0 +1,28 @@
+.city-info-card {
+    min-width: 200px;
+    background-color: #ffffff4f;
+    color: #fff;
+}
+
+.city {
+    color: #fff;
+}
+
+.weather-icon {
+    /* position: relative; */
+    /* top: 0; */
+    /* float: right; */
+    width: 50px;
+    height: 50px;
+}
+
+.btn-info {
+    background-color: #373a6d5d;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-info:hover {
+    background-color: #ff8246;
+    cursor: pointer;
+}

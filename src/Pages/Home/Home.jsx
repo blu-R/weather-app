@@ -5,6 +5,10 @@ import Header from "../../Components/Home/Header/Header";
 import CityForm from "../../Components/Home/CityForm/CityForm";
 import CityInfo from "../../Components/Home/Cityinfo/CityInfo";
 import Loader from "../../Components/Custom/Loader/Loader";
+import Footer from "../../Components/Custom/Footer/Footer";
+
+//STYLES
+import "./Home.styles.css";
 
 function Home() {
     //STATES
@@ -38,7 +42,7 @@ function Home() {
     };
 
     return (
-        <div>
+        <div className="flex flex-col items-center backg">
             <Header />
             <CityForm
                 fHandleChange={handleChange}
@@ -56,8 +60,13 @@ function Home() {
                     icon={cityData.weather[0].icon}
                 />
             ) : (
-                error && <p>{error}</p>
+                error && (
+                    <p className="mt-40 font-body text-light_blue capitalize text-2xl">
+                        {error}
+                    </p>
+                )
             )}
+            <Footer />
         </div>
     );
 }

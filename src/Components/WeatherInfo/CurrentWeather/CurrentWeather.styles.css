@@ -1,0 +1,8 @@
+.icon-current-weather {
+    width: 100px;
+    height: 100px;
+}
+
+.temp-current-weather {
+    text-shadow: 2px 2px 2px rgba(100, 100, 100, 0.7);
+}

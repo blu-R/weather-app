@@ -1,0 +1,31 @@
+.back-weather-info {
+    background: rgb(191, 245, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(191, 245, 255, 1) 0%,
+        rgba(1, 119, 255, 1) 87%
+    );
+    /* background-size: cover; */
+    height: auto;
+}
+
+@media screen and (min-width: 1352px) {
+    .back-weather-info {
+        height: 100vh;
+    }
+}
+
+.weather-info-container {
+    text-align: center;
+}
+
+.btn-weather-info {
+    background-color: #ff8246;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-weather-info:hover {
+    background-color: #373a6d;
+    cursor: pointer;
+}
