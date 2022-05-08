@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 //COMPONENTS
 import Header from "../../Components/Home/Header/Header";
@@ -16,6 +17,42 @@ function Home() {
     const [cityData, setCityData] = useState(null);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const handleError = () => {
+            console.log("Acceso a la ubicación denegado");
+        };
+        const succes = (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            // console.log(lat);
+            // console.log(lon);
+            axios
+                .get(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
+                )
+                .then((res) => {
+                    console.log(res);
+                    setCityData({
+                        name: `${res.data.name}, ${res.data.sys.country}`,
+                        main: {
+                            temp: res.data.main.temp,
+                        },
+                        coord: {
+                            lon: lon,
+                            lat: lat,
+                        },
+                        weather: [
+                            {
+                                icon: res.data.weather[0].icon,
+                            },
+                        ],
+                    });
+                });
+        };
+        navigator.geolocation.getCurrentPosition(succes, handleError);
+    }, []);
 
     //FUNCTIONS
     const handleChange = ({ value }) => {
@@ -44,11 +81,7 @@ function Home() {
     return (
         <div className="flex flex-col items-center backg">
             <Header />
-            <CityForm
-                fHandleChange={handleChange}
-                fHandleCitySearch={handleCitySearch}
-                city={cityName}
-            />
+
             {isLoading ? (
                 <Loader />
             ) : cityData ? (
@@ -66,6 +99,11 @@ function Home() {
                     </p>
                 )
             )}
+            <CityForm
+                fHandleChange={handleChange}
+                fHandleCitySearch={handleCitySearch}
+                city={cityName}
+            />
             <Footer />
         </div>
     );

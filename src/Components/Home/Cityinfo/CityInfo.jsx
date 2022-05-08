@@ -10,10 +10,10 @@ function CityInfo({ name, temp, lon, lat, icon }) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col justify-center city-info-card mt-32 pl-3 rounded-2xl shadow-xl lg:shadow-2xl">
+        <div className="flex flex-col justify-center city-info-card mt-20 mb-16 pl-3 rounded-2xl shadow-xl lg:shadow-2xl">
             <div className="flex">
                 <div className="flex flex-col justify-end h-28">
-                    <p className="text-5xl font-title pr-3 ">{temp}º</p>
+                    <p className="text-5xl font-title pr-3 ">{temp} ºC</p>
                     <h3 className="text-xl font-subtitle city">{name}</h3>
                 </div>
                 <div className="flex flex-col justify-start ">
