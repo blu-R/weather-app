@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //ROUTER
 import { useNavigate } from "react-router-dom";
@@ -9,11 +9,46 @@ function CityInfo({ name, temp, lon, lat, icon }) {
     //HOOKS ROUTER
     const navigate = useNavigate();
 
+    const [isCelsius, setIsCelsius] = useState(true);
+
+    const changeTempScale = () => {
+        setIsCelsius(!isCelsius);
+    };
+
     return (
         <div className="flex flex-col justify-center city-info-card mt-20 mb-16 pl-3 rounded-2xl shadow-xl lg:shadow-2xl">
             <div className="flex">
                 <div className="flex flex-col justify-end h-28">
-                    <p className="text-5xl font-title pr-3 ">{temp} ºC</p>
+                    <div className="flex justify-center items-start ">
+                        {isCelsius ? (
+                            <p className="text-5xl font-title pr-3 ">{temp}</p>
+                        ) : (
+                            <p className="text-5xl font-title pr-3 ">
+                                {((temp * 9) / 5 + 32).toFixed(2)}
+                            </p>
+                        )}
+                        {isCelsius ? (
+                            <p className="text-3xl  font-title">ºC </p>
+                        ) : (
+                            <button
+                                className="text-3xl  font-title btn-off"
+                                onClick={changeTempScale}
+                            >
+                                ºC
+                            </button>
+                        )}
+                        <p className="text-2xl mx-2">|</p>
+                        {isCelsius ? (
+                            <button
+                                className="text-3xl font-title btn-off"
+                                onClick={changeTempScale}
+                            >
+                                ºF
+                            </button>
+                        ) : (
+                            <p className="text-3xl  font-title">ºF </p>
+                        )}
+                    </div>
                     <h3 className="text-xl font-subtitle city">{name}</h3>
                 </div>
                 <div className="flex flex-col justify-start ">

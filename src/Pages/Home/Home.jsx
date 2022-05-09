@@ -28,14 +28,17 @@ function Home() {
 
             // console.log(lat);
             // console.log(lon);
+            //https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+
             axios
                 .get(
                     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
                 )
                 .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     setCityData({
-                        name: `${res.data.name}, ${res.data.sys.country}`,
+                        name: `${res.data.name}`,
+                        sys: { country: `${res.data.sys.country}` },
                         main: {
                             temp: res.data.main.temp,
                         },
@@ -77,7 +80,7 @@ function Home() {
             setCityData(result);
         }
     };
-
+    // console.log(cityData);
     return (
         <div className="flex flex-col items-center backg">
             <Header />
@@ -86,7 +89,7 @@ function Home() {
                 <Loader />
             ) : cityData ? (
                 <CityInfo
-                    name={cityData.name}
+                    name={`${cityData.name}, ${cityData.sys.country}`}
                     temp={cityData.main.temp}
                     lon={cityData.coord.lon}
                     lat={cityData.coord.lat}

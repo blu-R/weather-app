@@ -5,7 +5,7 @@
 }
 
 .city {
-    color: #fff;
+    color: #373a6d5d;
 }
 
 .weather-icon {
@@ -16,13 +16,21 @@
     height: 50px;
 }
 
+.btn-off {
+    color: #ffffff65;
+}
+
+.btn-off:hover {
+    color: #373a6d;
+}
+
 .btn-info {
-    background-color: #373a6d5d;
+    background-color: #ff8246;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
 .btn-info:hover {
-    background-color: #ff8246;
+    background-color: #373a6d;
     cursor: pointer;
 }

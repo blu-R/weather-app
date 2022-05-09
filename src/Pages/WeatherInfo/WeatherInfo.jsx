@@ -26,7 +26,7 @@ function WeatherInfo() {
                 `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
             );
             const result = await response.json();
-            console.log(result);
+            // console.log(result);
             setIsLoading(false);
             if (result.cod === "404") {
                 setError(result.message);
